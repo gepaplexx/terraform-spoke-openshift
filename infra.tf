@@ -8,6 +8,7 @@ resource vsphere_virtual_machine "infra" {
   num_cpus  = "${var.ocp_infra_cpu}"
   memory    = "${var.ocp_infra_memory_mb}"
   guest_id  = "otherLinux64Guest"
+  firmware  = "EFI"
 
   network_interface {
     network_id   = "${data.vsphere_network.network.id}"

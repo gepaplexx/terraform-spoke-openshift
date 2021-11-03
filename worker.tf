@@ -8,6 +8,7 @@ resource vsphere_virtual_machine "worker" {
   num_cpus  = "${var.ocp_worker_cpu}"
   memory    = "${var.ocp_worker_memory_mb}"
   guest_id  = "otherLinux64Guest"
+  firmware  = "EFI"
 
   network_interface {
     network_id   = "${data.vsphere_network.network.id}"
