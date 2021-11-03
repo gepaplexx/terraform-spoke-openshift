@@ -12,7 +12,7 @@ resource vsphere_virtual_machine "master" {
   network_interface {
     network_id   = "${data.vsphere_network.network.id}"
     use_static_mac = "true"
-    mac_address = "${var.spoke_mac_prefix}:${format("%2X", (count.index + 10))}"
+    mac_address = "${var.spoke_mac_prefix}:${format("%02X", (count.index + 10))}"
   }
   wait_for_guest_net_timeout = 0
   
