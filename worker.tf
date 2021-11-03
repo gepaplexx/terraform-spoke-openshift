@@ -5,8 +5,8 @@ resource vsphere_virtual_machine "worker" {
   datastore_id     = "${data.vsphere_datastore.ds.id}"
   folder           = "GP/${var.spoke_network_name}"
 
-  num_cpus  = "${var.ocp_infra_cpu}"
-  memory    = "${var.ocp_infra_memory_mb}"
+  num_cpus  = "${var.ocp_worker_cpu}"
+  memory    = "${var.ocp_worker_memory_mb}"
   guest_id  = "otherLinux64Guest"
 
   network_interface {
