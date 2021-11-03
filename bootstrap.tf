@@ -7,8 +7,8 @@ resource vsphere_virtual_machine "bootstrap" {
   num_cpus  = "${var.ocp_master_cpu}"
   memory    = "${var.ocp_master_memory_mb}"
   guest_id  = "otherLinux64Guest"
-  firmware  = "EFI"
-  
+  firmware  = "efi"
+
   network_interface {
     network_id   = "${data.vsphere_network.network.id}"
     use_static_mac = "true"
