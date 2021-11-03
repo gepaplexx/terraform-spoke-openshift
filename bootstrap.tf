@@ -13,6 +13,7 @@ resource vsphere_virtual_machine "bootstrap" {
     use_static_mac = "true"
     mac_address = "${var.spoke_mac_prefix}:09"
   }
+  wait_for_guest_net_timeout = 0
   
   disk {
     label            = "disk0"
