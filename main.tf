@@ -6,7 +6,7 @@ resource vsphere_virtual_machine "bootstrap" {
 
   num_cpus  = "${var.ocp_master_cpu}"
   memory    = "${var.ocp_master_memory_mb}"
-  guest_id  = "RHCoS"
+  guest_id  = "otherLinux64Guest"
 
   network_interface {
     network_id   = "${data.vsphere_network.network.id}"
