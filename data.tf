@@ -1,4 +1,4 @@
-data "vsphere_datacenter" "dc" {
+data vsphere_datacenter "dc" {
   name = "${var.vmware_datacenter}"
 }
 
