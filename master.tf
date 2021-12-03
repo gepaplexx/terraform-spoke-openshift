@@ -1,5 +1,5 @@
 resource vsphere_virtual_machine "master" {
-  count            = 3
+  count            = "${var.ocp_master_count}"
   name             = "master${count.index}.${var.spoke_network_name}"
   resource_pool_id = "${data.vsphere_compute_cluster.cc.resource_pool_id}"
   datastore_id     = "${data.vsphere_datastore.ds.id}"
@@ -21,5 +21,4 @@ resource vsphere_virtual_machine "master" {
     label            = "disk0"
     size             = 128
   }
-
 }

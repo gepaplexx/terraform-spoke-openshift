@@ -64,6 +64,15 @@ variable "ocp_infra_disk_gb" {
   description = "Specify the storage for rookfs + ceph in GB."
 }
 
+variable "ocp_master_count" {
+  type = number
+  validation {
+      condition     = contains([3, 5, 7], var.ocp_master_count)
+      error_message = "Valid values for var: ocp_master_count are (3, 5, 7)."
+  }
+  description = "Specify the number of master vms (valid values are 3,5,7)."
+}
+
 variable "ocp_master_cpu" {
   type = number
   description = "Specify the cpu for openshift master vms."
