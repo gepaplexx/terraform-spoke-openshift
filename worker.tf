@@ -1,5 +1,5 @@
 resource vsphere_virtual_machine "worker" {
-  count            = 3
+  count            = "${var.ocp_worker_count}"
   name             = "worker${count.index + 20}.${var.spoke_network_name}"
   resource_pool_id = "${data.vsphere_compute_cluster.cc.resource_pool_id}"
   datastore_id     = "${data.vsphere_datastore.ds.id}"
@@ -19,7 +19,7 @@ resource vsphere_virtual_machine "worker" {
   
   disk {
     label            = "disk0"
-    size             = 128
+    size             = "${var.ocp_worker_disk_gb}"
   }
 
 }

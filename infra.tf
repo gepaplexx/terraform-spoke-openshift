@@ -21,5 +21,10 @@ resource vsphere_virtual_machine "infra" {
     label            = "disk0"
     size             = 128
   }
+  
+  disk {
+    label            = "disk1"
+    size             = "${var.ocp_infra_disk_gb}"
+  }
 
 }

@@ -51,30 +51,45 @@ variable "vmware_datastore" {
 
 variable "ocp_infra_cpu" {
   type = number
-  description = "Specify the cpu for service vms."
+  description = "Specify the cpu for openshift infra vms."
 }
 
 variable "ocp_infra_memory_mb" {
   type = number
-  description = "Specify the ram in MB for servicce vms."
+  description = "Specify the ram in MB for openshift infra vms."
+}
+
+variable "ocp_infra_disk_gb" {
+  type = number
+  description = "Specify the storage for rookfs + ceph in GB."
 }
 
 variable "ocp_master_cpu" {
   type = number
-  description = "Specify the cpu for service vms."
+  description = "Specify the cpu for openshift master vms."
 }
 
 variable "ocp_master_memory_mb" {
   type = number
-  description = "Specify the ram in MB for servicce vms."
+  description = "Specify the ram in MB for openshift master vms."
+}
+
+variable "ocp_worker_count" {
+  type = number
+  description = "Specify the number of worker vms."
 }
 
 variable "ocp_worker_cpu" {
   type = number
-  description = "Specify the cpu for service vms."
+  description = "Specify the cpu for openshift worker vms."
 }
 
 variable "ocp_worker_memory_mb" {
   type = number
-  description = "Specify the ram in MB for servicce vms."
+  description = "Specify the ram in MB for openshift worker vms."
+}
+
+variable "ocp_worker_disk_gb" {
+  type = number
+  description = "Specify the disk size for each worker in GB."
 }
