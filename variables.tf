@@ -66,11 +66,10 @@ variable "ocp_infra_disk_gb" {
 
 variable "ocp_master_count" {
   type = number
-#TODO: fix validation
-#  validation {
-#      condition     = var.ocp_master_count == 3 || var.ocp_master_count == 5 || var.ocp_master_count == 7
-#      error_message = "Valid values for var: ocp_master_count are (3, 5, 7)."
-#  }
+  validation {
+    condition     = can(regex("3|5|7", var.ocp_master_count))
+    error_message = "Valid values for var: ocp_master_count are (3, 5, 7)."
+  }
   description = "Specify the number of master vms (valid values are 3,5,7)."
 }
 
