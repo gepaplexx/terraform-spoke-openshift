@@ -1,5 +1,5 @@
 resource vsphere_virtual_machine "infra" {
-  count            = 3
+  count            = var.ocp_infra_count
   name             = "infra${count.index}.${var.spoke_network_name}"
   resource_pool_id = "${data.vsphere_compute_cluster.cc.resource_pool_id}"
   datastore_id     = "${data.vsphere_datastore.ds.id}"
