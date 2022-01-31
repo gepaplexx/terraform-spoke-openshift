@@ -4,8 +4,8 @@ resource vsphere_virtual_machine "bootstrap" {
   datastore_id     = "${data.vsphere_datastore.ds.id}"
   folder           = "GP/${var.spoke_network_name}"
 
-  num_cpus  = "${var.ocp_master_cpu}"
-  memory    = "${var.ocp_master_memory_mb}"
+  num_cpus  = "4"
+  memory    = "16384"
   guest_id  = "otherLinux64Guest"
   firmware  = "efi"
 
