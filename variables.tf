@@ -52,10 +52,10 @@ variable "vmware_datastore" {
 variable "ocp_infra_count" {
   type = number
   validation {
-    condition     = can(regex("1|3|5|7", var.ocp_infra_count))
-    error_message = "Valid values for var: ocp_master_count are (0,1,3)."
+    condition     = can(regex("0|1|2|3|5|7", var.ocp_infra_count))
+    error_message = "Valid values for var: ocp_master_count are (0-3,5,7)."
   }
-  description = "Specify the number of infrastructure vms (valid values are 0,1,3)."
+  description = "Specify the number of infrastructure vms (valid values are 0-3,5,7)."
 }
 
 variable "ocp_infra_cpu" {
