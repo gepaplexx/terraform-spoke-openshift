@@ -111,3 +111,15 @@ variable "ocp_worker_disk_gb" {
   type        = number
   description = "Specify the disk size for each worker in GB."
 }
+
+variable "ocp_worker_storage_enabled" {
+  type        = bool
+  description = "Whether worker should be provisioned with disk space for dynamic storage provisioning"
+  default     = false
+}
+
+variable "ocp_worker_storage_size_gb" {
+  type        = number
+  description = "Size of disk to be used for dynamic storage provisioning on worker nodes"
+  default     = 128
+}

@@ -1,17 +1,17 @@
 resource vsphere_virtual_machine "worker" {
-  count            = "${var.ocp_worker_count}"
+  count            = var.ocp_worker_count
   name             = "worker${count.index + 20}.${var.spoke_network_name}"
-  resource_pool_id = "${data.vsphere_compute_cluster.cc.resource_pool_id}"
-  datastore_id     = "${data.vsphere_datastore.ds.id}"
+  resource_pool_id = data.vsphere_compute_cluster.cc.resource_pool_id
+  datastore_id     = data.vsphere_datastore.ds.id
   folder           = "GP/${var.spoke_network_name}"
 
-  num_cpus  = "${var.ocp_worker_cpu}"
-  memory    = "${var.ocp_worker_memory_mb}"
+  num_cpus  = var.ocp_worker_cpu
+  memory    = var.ocp_worker_memory_mb
   guest_id  = "otherLinux64Guest"
   firmware  = "efi"
 
   network_interface {
-    network_id   = "${data.vsphere_network.network.id}"
+    network_id   = data.vsphere_network.network.id
     use_static_mac = "true"
     mac_address = "${var.spoke_mac_prefix}:${format("%02X", (count.index + 20))}"
   }
@@ -19,7 +19,13 @@ resource vsphere_virtual_machine "worker" {
   
   disk {
     label            = "disk0"
-    size             = "${var.ocp_worker_disk_gb}"
+    size             = var.ocp_worker_disk_gb
+  }
+
+  disk {
+    count           = var.ocp_worker_storage_enabled == true ? 1 : 0
+    label           = "disk1"
+    size            = var.ocp_worker_storage_size_gb
   }
 
 }
