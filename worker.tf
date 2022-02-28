@@ -24,7 +24,7 @@ resource vsphere_virtual_machine "worker" {
   }
 
   dynamic "disk" {
-    for_each        = var.ocp_worker_storage_enabled
+    for_each        = var.ocp_worker_storage_enabled > 0 ? ["1"] : []
     content {
       label           = "disk1"
       size            = var.ocp_worker_storage_size_gb
