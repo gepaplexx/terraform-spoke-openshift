@@ -20,6 +20,7 @@ resource vsphere_virtual_machine "worker" {
   disk {
     label            = "disk0"
     size             = var.ocp_worker_disk_gb
+    unit_number      = 0
   }
 
   dynamic "disk" {
@@ -27,6 +28,7 @@ resource vsphere_virtual_machine "worker" {
     content {
       label           = "disk1"
       size            = var.ocp_worker_storage_size_gb
+      unit_number     = 1
     }
   }
 
