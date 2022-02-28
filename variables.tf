@@ -113,9 +113,13 @@ variable "ocp_worker_disk_gb" {
 }
 
 variable "ocp_worker_storage_enabled" {
-  type        = bool
+  type        = number
   description = "Whether worker should be provisioned with disk space for dynamic storage provisioning"
-  default     = false
+  default     = 0
+  validation {
+    condition     = can(regex("1|3|5|7", var.ocp_worker_storage_enabled))
+    error_message = "Valid values for var: ocp_worker_storage_enabled are (0,1)."
+  }
 }
 
 variable "ocp_worker_storage_size_gb" {

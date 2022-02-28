@@ -22,10 +22,12 @@ resource vsphere_virtual_machine "worker" {
     size             = var.ocp_worker_disk_gb
   }
 
-  disk {
-    count           = var.ocp_worker_storage_enabled == true ? 1 : 0
-    label           = "disk1"
-    size            = var.ocp_worker_storage_size_gb
+  dynamic "disk" {
+    for_each        = var.ocp_worker_storage_enabled
+    content {
+      label           = "disk1"
+      size            = var.ocp_worker_storage_size_gb
+    }
   }
 
 }
